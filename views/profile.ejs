@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        <%= user.username %>'s Profile
+    </h1>
+
+    <p>
+        Followers: <%= user.followers.length %>
+    </p>
+
+    <p>
+        Following: <%= user.following.length %>
+    </p>
+
+    <% if(currentUserId != user._id) { %>
+
+        <form action="/follow/<%= user._id %>" method="POST">
+
+            <button type="submit">
+                Follow
+            </button>
+
+        </form>
+
+    <% } %>
+
+    <hr>
+
+    <h2>User Posts</h2>
+
+    <% posts.forEach(post => { %>
+
+        <div class="post-box">
+
+            <p>
+                <%= post.content %>
+            </p>
+
+        </div>
+
+    <% }) %>
+
+    <br>
+
+    <a href="/dashboard">
+        Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>
